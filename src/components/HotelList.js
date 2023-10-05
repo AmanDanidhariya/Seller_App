@@ -19,12 +19,12 @@ const HotelList = () => {
 
   return (
     <section className="flex justify-center flex-wrap">
-      {filteredHotels.map((hotel, i) => {
+      {filteredHotels.map((hotel) => {
         const hotelName = hotel["name"].slice(0,25)
         return (
           <NavLink 
-          to={`movie/${i}`}
-            key={i}
+          to={`property/${hotel.id}`}
+            key={hotel.id}
             className=" relative w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 m-4 max-h-[350px] bg-white rounded-lg p-2"
           >
             <figure>

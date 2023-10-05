@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
     <Routes>
         <Route path="/"  element={<Home/>}/>
-        <Route path="/property/:id," element={<SingleCard/>}/>
+        <Route path="/property/:id" element={<SingleCard/>}/>
         <Route path="*" element={<PageNotFound/>}/>
       </Routes>
     </BrowserRouter>
