@@ -12,17 +12,17 @@ const HotelList = () => {
   const selectedCity = useSelector((state) => state.hotels.selectedCity);
 
   const [visibleHotel, setVisibleHotel] = useState(6);
-  const [showMore ,setShowMore] = useState(true);
+  const [showMore, setShowMore] = useState(true);
 
   // Filter the hotelData based on selectedCities
   const filteredHotels = data.filter((hotel) =>
     selectedCity.includes(hotel.city)
   );
 
-  const handleShowMore = ()=>{
-    setVisibleHotel((prev)=> prev + 3);
-    setShowMore(!showMore)
-  }
+  const handleShowMore = () => {
+    setVisibleHotel((prev) => prev + 3);
+    setShowMore(!showMore);
+  };
 
   return (
     <div className="mt-4">
@@ -74,7 +74,7 @@ const HotelList = () => {
                     {hotel.beds}
                   </p>
                 </div>
-                <div className="flex justify-between my-1">
+                <div className="flex justify-between my-2">
                   <p className="text-medium">
                     <span className="text-xl font-semibold text-indigo-700">
                       ${hotel.price.rate}
@@ -82,7 +82,7 @@ const HotelList = () => {
                     / month
                   </p>
                   <div className="flex items-center">
-                    <button className="text-white bg-indigo-700 px-3 py-1 rounded-lg text-sm hover:bg-gray-200 hover:text-blue-500">
+                    <button className="text-white bg-indigo-700 px-3 py-2 rounded-lg text-sm hover:bg-gray-200 hover:text-blue-500">
                       Read more
                     </button>
                   </div>
@@ -92,19 +92,21 @@ const HotelList = () => {
           );
         })}
       </section>
-      {showMore && <div className="flex justify-center">
-        <button
-          className={`${
-            visibleHotel.length > 6 ? "hidden" : ""
-          }py-3 px-5 rounded-full bg-indigo-700 text-white flex items-center m-4`}
-          onClick={handleShowMore}
-        >
-          <span className="mr-2">
-            <ImHourGlass />
-          </span>
-          Show More
-        </button>
-      </div>}
+      {showMore && (
+        <div className="flex justify-center">
+          <button
+            className={`${
+              visibleHotel.length > 6 ? "hidden" : ""
+            }py-3 px-5 rounded-full bg-indigo-700 text-white flex items-center m-4`}
+            onClick={handleShowMore}
+          >
+            <span className="mr-2">
+              <ImHourGlass />
+            </span>
+            Show More
+          </button>
+        </div>
+      )}
     </div>
   );
 };

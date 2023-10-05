@@ -9,11 +9,7 @@ import { GiBed } from "react-icons/gi";
 
 const SingleCard = () => {
   const { id } = useParams();
-  // const selectedCity = useSelector((state) => state.hotels.selectedCity);
-
   const [selectedHotel, setSelectedHotel] = useState(null);
-
-  console.log(selectedHotel);
 
   useEffect(() => {
     //find the selected hotel based on id parameter
@@ -72,7 +68,7 @@ const SingleCard = () => {
                 {selectedHotel.beds}
               </p>
             </div>
-            <div className="flex justify-between my-1">
+            <div className="flex justify-between my-2">
               <p className="text-medium">
                 <span className="text-xl font-semibold">
                   ${selectedHotel.price.rate}
@@ -80,7 +76,6 @@ const SingleCard = () => {
                 / month
               </p>
               <div className="flex items-center">
-
                 <button className="text-white bg-indigo-700 px-3 py-2  rounded-lg text-sm hover:bg-gray-200 hover:text-blue-500">
                   Read More
                 </button>
@@ -90,9 +85,12 @@ const SingleCard = () => {
         </div>
       </section>
       <div className="flex justify-center">
-      <Link to="/" className="px-6 py-4 bg-indigo-600  rounded-lg text-white hover:text-black">
-        Back
-      </Link>
+        <Link
+          to="/"
+          className="px-6 py-4 bg-indigo-600  rounded-lg text-white hover:text-black"
+        >
+          Back
+        </Link>
       </div>
     </>
   );
