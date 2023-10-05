@@ -1,34 +1,38 @@
-import React, { } from "react";
+import React from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import {setSelectedCity} from "../slices/hotelSlice"
+import { setSelectedCity } from "../slices/hotelSlice";
 
 const CityList = () => {
-    const dispatch = useDispatch();
-    const hotelData = ((state)=>state.hotels.hotelData);
-    const selectedCity = useSelector((state) => state.hotels.selectedCities);
-
+  const dispatch = useDispatch();
+//   const selectedCity = useSelector((state) => state.hotels.selectedCities);
+  const selectedCity = useSelector((state) => {
+    console.log("Selected Cities:", state.hotels.selectedCity);
+    return state.hotels.selectedCity || [];
+  });
   const cityArray = ["Paris", "Bagneux", "Le Bourget", "Boulogne-Billancourt"];
 
-
   const handleCityButtonClick = (city) => {
-    if(selectedCity.includes(city)){
-        //remove city if already selected
-        dispatch(setSelectedCity(selectedCity.filter((c) => c !== city)));
-    }else{
-        //add city  if not already selected
-        dispatch(setSelectedCity([...selectedCity, city]));
+    if (selectedCity.includes(city)) {
+      //remove city if already selected
+      dispatch(setSelectedCity(selectedCity.filter((c) => c !== city)));
+    } else {
+      //add city  if not already selected
+      dispatch(setSelectedCity([...selectedCity, city]));
     }
   };
-
 
   return (
     <div className="flex justify-between">
       <div>
-        {cityArray.map((city ,i) => (
+        {cityArray.map((city, i) => (
           <button
             key={i}
-            className={`min-w-[150px] text-sm mx-2 p-4 bg-gray-300 rounded-full ${selectedCity.includes(city) ? "bg-indigo-700 text-white":"hover:bg-indigo-700 hover:text-white"}`}
+            className={`min-w-[150px] text-sm mx-2 p-4 bg-gray-300 rounded-full ${
+              selectedCity.includes(city)
+                ? "bg-indigo-700 text-white"
+                : "hover:bg-indigo-700 hover:text-white"
+            }`}
             onClick={() => handleCityButtonClick(city)}
           >
             {city}

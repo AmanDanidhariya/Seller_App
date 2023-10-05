@@ -1,5 +1,5 @@
-{
-  "results": [
+
+  const results =  [
     {
       "id": "576543512410533631",
       "url": "https://www.airbnb.com/rooms/576543512410533631",
@@ -2234,4 +2234,5 @@
       }
     }
   ]
-}
+  export default results;
+
