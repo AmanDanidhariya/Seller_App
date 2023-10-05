@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import data from "../assets/results";
 import { BsSpeedometer2 } from "react-icons/bs";
@@ -12,6 +12,8 @@ const HotelList = () => {
   const filteredHotels = data.filter((hotel) =>
     selectedCity.includes(hotel.city)
   );
+
+
 
   return (
     <section className="flex justify-center flex-wrap">

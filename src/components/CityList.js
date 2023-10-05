@@ -12,13 +12,14 @@ const CityList = () => {
   });
   const cityArray = ["Paris", "Bagneux", "Le Bourget", "Boulogne-Billancourt"];
 
+  //filter array on city button 
   const handleCityButtonClick = (city) => {
     if (selectedCity.includes(city)) {
       //remove city if already selected
       dispatch(setSelectedCity(selectedCity.filter((c) => c !== city)));
     } else {
-      //add city  if not already selected
-      dispatch(setSelectedCity([...selectedCity, city]));
+      // Clear the selected cities and select the clicked city
+      dispatch(setSelectedCity([ city]));
     }
   };
 
