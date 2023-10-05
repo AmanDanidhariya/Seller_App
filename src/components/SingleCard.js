@@ -80,10 +80,8 @@ const SingleCard = () => {
                 / month
               </p>
               <div className="flex items-center">
-                <span className="text-blue-500 mx-2 bg-emerald-200 p-1 rounded-lg cursor-pointer hover:text-white hover:bg-blue-500">
-                  <AiOutlineHeart />
-                </span>
-                <button className="text-white bg-blue-500 px-3 py-2  rounded-lg text-sm hover:bg-gray-200 hover:text-blue-500">
+
+                <button className="text-white bg-indigo-700 px-3 py-2  rounded-lg text-sm hover:bg-gray-200 hover:text-blue-500">
                   Read More
                 </button>
               </div>
