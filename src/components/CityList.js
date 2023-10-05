@@ -1,25 +1,31 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedCity } from "../slices/hotelSlice";
 
 const CityList = () => {
   const dispatch = useDispatch();
-//   const selectedCity = useSelector((state) => state.hotels.selectedCities);
-  const selectedCity = useSelector((state) => {
-    console.log("Selected Cities:", state.hotels.selectedCity);
-    return state.hotels.selectedCity || [];
-  });
-  const cityArray = ["Paris", "Bagneux", "Le Bourget", "Boulogne-Billancourt"];
+  const selectedCity = useSelector((state) => state.hotels.selectedCity);
 
-  //filter array on city button 
+  const cityArray = useMemo(
+    () => ["Paris", "Bagneux", "Le Bourget", "Boulogne-Billancourt"],
+    []
+  );
+
+  useEffect(() => {
+    if (selectedCity.length === 0) {
+      dispatch(setSelectedCity(cityArray[0]));
+    }
+  }, [cityArray, selectedCity, dispatch]);
+
+  //filter array on city button
   const handleCityButtonClick = (city) => {
     if (selectedCity.includes(city)) {
       //remove city if already selected
       dispatch(setSelectedCity(selectedCity.filter((c) => c !== city)));
     } else {
       // Clear the selected cities and select the clicked city
-      dispatch(setSelectedCity([ city]));
+      dispatch(setSelectedCity([city]));
     }
   };
 
